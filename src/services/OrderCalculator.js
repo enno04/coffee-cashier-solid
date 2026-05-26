@@ -5,6 +5,8 @@ class OrderCalculator {
   }
 
   calculateSubtotal(orderItems) {
+    this.validateOrderItems(orderItems);
+
     return orderItems.reduce((total, order) => {
       const menu = this.menuCatalog.findByCode(order.code);
 
