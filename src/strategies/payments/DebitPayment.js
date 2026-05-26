@@ -1,6 +1,14 @@
 class DebitPayment {
+  constructor(providerName = "debit") {
+    this.providerName = providerName;
+  }
+
   pay(amount) {
-    return `Pembayaran debit sebesar Rp${amount} berhasil`;
+    return `Pembayaran ${this.providerName} sebesar Rp${amount} berhasil`;
+  }
+
+  getProvider() {
+    return this.providerName;
   }
 }
 
