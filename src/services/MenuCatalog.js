@@ -15,6 +15,10 @@ class MenuCatalog {
     return this.items;
   }
 
+    getItemNames() {
+    return this.items.map(item => item.name);
+  }
+
   findByCode(code) {
     return this.items.find(item => item.code === code);
   }
