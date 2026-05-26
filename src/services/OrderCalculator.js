@@ -4,6 +4,12 @@ class OrderCalculator {
     this.discountStrategy = discountStrategy;
   }
 
+    validateOrderItems(orderItems) {
+    if (!Array.isArray(orderItems) || orderItems.length === 0) {
+      throw new Error("Pesanan tidak boleh kosong");
+    }
+  }
+
   calculateSubtotal(orderItems) {
     this.validateOrderItems(orderItems);
 
