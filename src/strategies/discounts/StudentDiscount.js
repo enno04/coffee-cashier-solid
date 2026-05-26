@@ -1,6 +1,14 @@
 class StudentDiscount {
+  constructor() {
+    this.discountRate = 0.05;
+  }
+
   apply(total) {
-    return total - total * 0.05;
+    return total - total * this.discountRate;
+  }
+
+  getDescription() {
+    return "Diskon mahasiswa 5%";
   }
 }
 
