@@ -3,17 +3,25 @@ class ReceiptPrinter {
     this.shopName = shopName;
   }
 
+  formatCurrency(amount) {
+    return `Rp${amount}`;
+  }
+
+  formatItemLine(menu, quantity) {
+    const itemTotal = menu.price * quantity;
+    return `${menu.name} x ${quantity} = ${this.formatCurrency(itemTotal)}\n`;
+  }
+
   print(orderItems, menuCatalog, subtotal, total, paymentResult) {
     let receipt = `=== STRUK ${this.shopName} ===\n`;
 
-    orderItems.forEach(order => {
+      orderItems.forEach(order => {
       const menu = menuCatalog.findByCode(order.code);
-      const itemTotal = menu.price * order.quantity;
-      receipt += `${menu.name} x ${order.quantity} = Rp${itemTotal}\n`;
+      receipt += this.formatItemLine(menu, order.quantity);
     });
 
-    receipt += `Subtotal: Rp${subtotal}\n`;
-    receipt += `Total Akhir: Rp${total}\n`;
+    receipt += `Subtotal: ${this.formatCurrency(subtotal)}\n`;
+    receipt += `Total Akhir: ${this.formatCurrency(total)}\n`;
     receipt += paymentResult;
 
     return receipt;
