@@ -1,6 +1,14 @@
 class CashPayment {
+  constructor(providerName = "tunai") {
+    this.providerName = providerName;
+  }
+
   pay(amount) {
-    return `Pembayaran tunai sebesar Rp${amount} berhasil`;
+    return `Pembayaran ${this.providerName} sebesar Rp${amount} berhasil`;
+  }
+
+  getProvider() {
+    return this.providerName;
   }
 }
 
